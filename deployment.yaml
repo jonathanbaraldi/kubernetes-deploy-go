@@ -1,0 +1,60 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-server
+  namespace: go
+  labels:
+    app: goapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: goapi
+  template:
+    metadata:
+      labels:
+        app: goapi
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: goapi
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        ports:
+        - containerPort: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-service
+  namespace: go
+spec:
+  selector:
+    app: goapi
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: go
+  name: helloserver-ingress
+  annotations:
+    allow.http: "false"
+spec:
+  rules:
+  - host: go.prod.globaltranscribe.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: go-service
+            servicePort: 8080

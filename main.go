@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-const webContent = {"gokube-go-api-v1"}
+const webContent = "{ api : gokube, v : 1  } "
 
 func main() {
 	http.HandleFunc("/", helloHandler)

@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-server
-  namespace: go
+  #namespace: go
   labels:
     app: goapi
 spec:
@@ -30,7 +30,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: go-service
-  namespace: go
+  #namespace: go
 spec:
   selector:
     app: goapi
@@ -45,13 +45,13 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: go
+  #namespace: go
   name: go-ingress
   annotations:
     allow.http: "false"
 spec:
   rules:
-  - host: go.dev.sagemaker.io
+  - host: go.rancher.dev-ops-ninja.com
     http:
       paths:
         - path: /

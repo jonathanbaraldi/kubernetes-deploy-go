@@ -16,5 +16,5 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-timeout: 5
+timeout: 20
 notification: {}

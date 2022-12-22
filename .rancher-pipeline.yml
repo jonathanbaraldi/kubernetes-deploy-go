@@ -13,6 +13,8 @@ stages:
       buildContext: .
       tag: go-server:${CICD_EXECUTION_SEQUENCE}
 - name: Deploy
-  steps: 
+  steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+timeout: 5
+notification: {}

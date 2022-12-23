@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-const webContent = "dev-ops-ninja:vXPT29"
+const webContent = "dev-ops-ninja:vXPT30"
 
 func main() {
 	http.HandleFunc("/", helloHandler)

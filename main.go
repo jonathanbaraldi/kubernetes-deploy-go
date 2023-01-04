@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-const webContent = "dev-ops-ninja:v99"
+const webContent = "Test of automatic deployment on Kubernetes across Rancher :)"
 
 func main() {
 	http.HandleFunc("/", helloHandler)

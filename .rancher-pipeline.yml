@@ -3,12 +3,9 @@ stages:
   steps:
   - runScriptConfig:
       image: golang:1.11
-      shellScript: |-
-        mkdir -p /go/src/github.com/rancher
-        ln -s `pwd` /go/src/github.com/rancher/pipeline-example-go
-        cd /go/src/github.com/rancher/pipeline-example-go
-        go build -o bin/hello-server
-        go test -cover
+      shellScript: "mkdir -p /go/src/github.com/rancher\nln -s `pwd` /go/src/github.com/rancher/pipeline-example-go\ncd
+        /go/src/github.com/rancher/pipeline-example-go\ngo build -o bin/hello-server
+        \ngo test -cover"
 - name: Publish
   steps:
   - publishImageConfig:
@@ -19,3 +16,5 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+timeout: 20
+notification: {}

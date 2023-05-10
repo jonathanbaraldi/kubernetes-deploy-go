@@ -51,7 +51,7 @@ metadata:
     allow.http: "false"
 spec:
   rules:
-  - host: go.rancher.dev-ops-ninja.com
+  - host:    msoares.appdev.rancher.marsdigital.site
     http:
       paths:
         - path: /
